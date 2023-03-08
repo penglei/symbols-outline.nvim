@@ -176,7 +176,7 @@ function M.get_lines(flattened_outline_items)
     table.insert(lines, string_prefix .. node.icon .. ' ' .. node.name)
 
     local hl_start = #string_prefix
-    local hl_end = #string_prefix + #node.icon
+    local hl_end = #string_prefix + math.min(#node.icon, 3) -- 4-bytes emoji doesn't work
     local hl_type = config.options.symbols[symbols.kinds[node.kind]].hl
     table.insert(hl_info, { node_line, hl_start, hl_end, hl_type })
 
